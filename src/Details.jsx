@@ -1,6 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-
+import Article from "./components/Article";
 const Details = ({ data }) => {
   const updatedPosts = data.posts.map((post) => {
     const comments = data.comments.filter(
@@ -26,7 +26,9 @@ const Details = ({ data }) => {
     return <h1>Loading...</h1>;
   } else {
     const post = selectedPost[0].post;
-    return <h1>Details {post.title}</h1>;
+    const comments = selectedPost[0].comments;
+    const author = selectedPost[0].author;
+    return <Article post={post} comments={comments} author={author} />;
   }
 };
 
